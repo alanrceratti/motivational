@@ -1,0 +1,17 @@
+h1 {
+	color: rgb(255, 255, 255);
+}
+
+body,
+section {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	background-color: #000000;
+	background-image: linear-gradient(
+		160deg,
+		#000000 0%,
+		#6d0000 50%,
+		#520000 100%
+	);
+}
