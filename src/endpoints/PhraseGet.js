@@ -5,35 +5,40 @@ import money2 from "../Assets/money2.avif";
 import money3 from "../Assets/money3.avif";
 
 function PhraseGet() {
+	const baseUrl = "C:/Users/Ceratti/Desktop/TI/Motivational_API";
+	const [categoryId, setCategoryId] = React.useState(null);
 	const [data, setData] = useState(null);
 
-	useEffect(() => {
-		async function fetchData() {
+	function randomNumber(min, max) {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+	const number = randomNumber(1, 3);
+	async function fetchData() {
+		try {
 			const response = await fetch(
-				"http://127.0.0.1:8000/api/phrases/1/"
+				`http://127.0.0.1:200/api/categories/1/phrases/?filter_by_id=${number}`
+				// `https://motivational-api-2kzjz.ondigitalocean.app/api/categories/1/phrases/?filter_by_id=${number}`
 			);
 			const json = await response.json();
 			setData(json);
-			console.log();
+		} catch (error) {
+			console.error(error);
 		}
+	}
+	useEffect(() => {
 		fetchData();
 	}, []);
+	function handleClick(option) {
+		setCategoryId(option);
+	}
 
 	return (
 		<>
 			<section className={styles.container}>
 				<div className={styles.um}>
-					<img src={money3} alt="money1" />
+					{data && <img src={data.image_url} alt="image_phrase" />}
 					<div>{data ? <h1>{data.phrase}</h1> : "Loading..."}</div>
 				</div>
-				{/* <div className={styles.dois}>
-					<img src={money2} alt="money2" />
-					{data ? <h1>{data.phrase}</h1> : "Loading..."}
-				</div>
-				<div className={styles.tres}>
-					<img src={money3} alt="money2" />
-					{data ? <h1>{data.phrase}</h1> : "Loading..."}
-				</div> */}
 			</section>
 		</>
 	);

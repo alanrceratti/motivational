@@ -97,4 +97,13 @@
 		transition: none;
 		transition-delay: none;
 	}
+	select {
+		width: 10rem;
+		color: red;
+		background-color: black;
+		option {
+			width: 8rem;
+			color: green;
+		}
+	}
 }
