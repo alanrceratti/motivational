@@ -66,7 +66,6 @@ function PhraseGet() {
 				} else {
 					const json = await response.json();
 					setData(json);
-					setLoadingImg(false);
 				}
 			} catch (error) {
 				console.error("asdasdad");
@@ -80,7 +79,7 @@ function PhraseGet() {
 
 	return (
 		<>
-			{loading ? (
+			{loadingImg ? (
 				<p>Loading......</p>
 			) : (
 				<div className={styles.options}>
@@ -93,20 +92,12 @@ function PhraseGet() {
 					</select>
 				</div>
 			)}
-			{loadingImg ? (
-				<h1>Loading</h1>
-			) : (
-				<section className={styles.container}>
-					<div className={styles.um}>
-						{data && (
-							<img src={data.image_url} alt="image_phrase" />
-						)}
-						<div>
-							{data ? <h1>{data.phrase}</h1> : "Loading..."}
-						</div>
-					</div>
-				</section>
-			)}
+			<section className={styles.container}>
+				<div className={styles.um}>
+					{data && <img src={data.image_url} alt="image_phrase" />}
+					<div>{data ? <h1>{data.phrase}</h1> : "Loading..."}</div>
+				</div>
+			</section>
 		</>
 	);
 }

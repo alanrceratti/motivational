@@ -93,20 +93,13 @@ function PhraseGet() {
 					</select>
 				</div>
 			)}
-			{loadingImg ? (
-				<h1>Loading</h1>
-			) : (
-				<section className={styles.container}>
-					<div className={styles.um}>
-						{data && (
-							<img src={data.image_url} alt="image_phrase" />
-						)}
-						<div>
-							{data ? <h1>{data.phrase}</h1> : "Loading..."}
-						</div>
-					</div>
-				</section>
-			)}
+			loadingImg ? (<h1>Loadingasd</h1>) : (
+			<section className={styles.container}>
+				<div className={styles.um}>
+					{data && <img src={data.image_url} alt="image_phrase" />}
+					<div>{data ? <h1>{data.phrase}</h1> : "Loading..."}</div>)
+				</div>
+			</section>
 		</>
 	);
 }

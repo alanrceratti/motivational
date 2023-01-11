@@ -6,7 +6,6 @@ function PhraseGet() {
 	const [data, setData] = useState(null);
 	const [options, setOptions] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const [loadingImg, setLoadingImg] = useState(true);
 	const [number, setNumber] = useState(1);
 	// const [count, setCount] = useState(0);
 	function handleChangeCategory(e) {
@@ -66,7 +65,6 @@ function PhraseGet() {
 				} else {
 					const json = await response.json();
 					setData(json);
-					setLoadingImg(false);
 				}
 			} catch (error) {
 				console.error("asdasdad");
@@ -93,20 +91,12 @@ function PhraseGet() {
 					</select>
 				</div>
 			)}
-			{loadingImg ? (
-				<h1>Loading</h1>
-			) : (
-				<section className={styles.container}>
-					<div className={styles.um}>
-						{data && (
-							<img src={data.image_url} alt="image_phrase" />
-						)}
-						<div>
-							{data ? <h1>{data.phrase}</h1> : "Loading..."}
-						</div>
-					</div>
-				</section>
-			)}
+			<section className={styles.container}>
+				<div className={styles.um}>
+					{data && <img src={data.image_url} alt="image_phrase" />}
+					<div>{data ? <h1>{data.phrase}</h1> : "Loading..."}</div>
+				</div>
+			</section>
 		</>
 	);
 }
