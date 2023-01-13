@@ -48,7 +48,7 @@ function PhraseGet() {
 				);
 				randomNumber = filteredId1[randomIndex];
 				// set the new random number
-				setNumber(randomNumber);
+				setNumber(randomNumber.toString());
 				// add new randomNumber to the previousid1 array
 				previousid1.push(randomNumber);
 				// store the updated previousid1 array in local storage
@@ -77,7 +77,7 @@ function PhraseGet() {
 				);
 				randomNumber = filteredId2[randomIndex];
 				// set the new random number
-				setNumber(randomNumber);
+				setNumber(randomNumber.toString());
 				// add new randomNumber to the previousid2 array
 				previousid2.push(randomNumber);
 				// store the updated previousid2 array in local storage
@@ -115,7 +115,7 @@ function PhraseGet() {
 
 	async function fetchData() {
 		let retries = 0;
-		const MAX_RETRIES = 3;
+		const MAX_RETRIES = 2;
 		let response;
 
 		while (
@@ -148,35 +148,35 @@ function PhraseGet() {
 
 	return (
 		<section className={styles.mainContainerr}>
-			{loading ? (
-				<p>Loading......</p>
-			) : (
-				<div className={styles.options}>
-					<Options onClick={handleClick} />
-					<select
-						style={{ display: showSelect ? "block" : "none" }}
-						onChange={handleChangeCategory}
-					>
-						{options.map((option) => (
-							<option key={option.id} value={option.id}>
-								{option.category_name}
-							</option>
-						))}
-					</select>
-				</div>
-			)}
-			{loadingImg ? (
-				<h1>Loading</h1>
-			) : (
-				<div className={styles.um}>
-					<div>
+		
+				{loading ? (
+					<p>Loading......</p>
+				) : (
+					<div className={styles.options}>
+						<Options onClick={handleClick} />
+						<select
+							style={{ display: showSelect ? "block" : "none" }}
+							onChange={handleChangeCategory}
+						>
+							{options.map((option) => (
+								<option key={option.id} value={option.id}>
+									{option.category_name}
+								</option>
+							))}
+						</select>
+					</div>
+				)}
+				{loadingImg ? (
+					<h1>Loading</h1>
+				) : (
+					<div className={styles.um}>
 						{data && (
 							<img src={data.image_url} alt="image_phrase" />
 						)}
 						{data ? <h1>{data.phrase}</h1> : "Loading..."}
 					</div>
-				</div>
-			)}
+				)}
+			</div>
 		</section>
 	);
 }

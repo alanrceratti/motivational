@@ -48,7 +48,7 @@ function PhraseGet() {
 				);
 				randomNumber = filteredId1[randomIndex];
 				// set the new random number
-				setNumber(randomNumber);
+				setNumber(randomNumber.toString());
 				// add new randomNumber to the previousid1 array
 				previousid1.push(randomNumber);
 				// store the updated previousid1 array in local storage
@@ -77,7 +77,7 @@ function PhraseGet() {
 				);
 				randomNumber = filteredId2[randomIndex];
 				// set the new random number
-				setNumber(randomNumber);
+				setNumber(randomNumber.toString());
 				// add new randomNumber to the previousid2 array
 				previousid2.push(randomNumber);
 				// store the updated previousid2 array in local storage
@@ -115,7 +115,7 @@ function PhraseGet() {
 
 	async function fetchData() {
 		let retries = 0;
-		const MAX_RETRIES = 3;
+		const MAX_RETRIES = 5;
 		let response;
 
 		while (
@@ -130,6 +130,7 @@ function PhraseGet() {
 				);
 
 				if (response.status === 404) {
+					handleChangeCategory();
 					retries++;
 				} else {
 					const json = await response.json();
