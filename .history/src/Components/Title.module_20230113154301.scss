@@ -1,0 +1,20 @@
+.container {
+	width: 100vw;
+	height: 10vh;
+
+	background-color: black;
+	margin: auto;
+
+	div {
+		display: flex;
+		margin: 0 auto;
+		height: 5vh;
+	}
+
+	h1 {
+		font-family: "Unbounded";
+		font-size: 2rem;
+		letter-spacing: 0.2rem;
+		text-align: center;
+	}
+}
