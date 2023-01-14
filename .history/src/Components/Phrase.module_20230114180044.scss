@@ -1,0 +1,60 @@
+.um {
+	div {
+		display: flex;
+		height: 80vh;
+		margin: 3rem;
+		width: 80vw;
+		position: static;
+		justify-content: center;
+		align-items: center;
+	}
+	img {
+		aspect-ratio: 7/4;
+		width: 60vw;
+		object-fit: fill;
+		border: 2px inset #000000;
+		border-radius: 100px 250px 100px 250px;
+		opacity: 0.9;
+		position: absolute;
+	}
+	h1 {
+		width: 50%;
+		margin: auto;
+		margin-top: 15rem;
+		z-index: 100;
+		backdrop-filter: blur(12px) saturate(176%);
+		-webkit-backdrop-filter: blur(12px) saturate(176%);
+		background-color: rgba(0, 0, 0, 0.3);
+		letter-spacing: 0.25rem;
+		font-size: 4rem;
+		font-family: "Patua One";
+		text-align: center;
+		text-shadow: rgb(0, 0, 0) 0.3rem 0px 0px, rgb(0, 0, 0) 0.54px 0.84px 0px,
+			rgb(0, 0, 0) -0.41px 0.9px 0px, rgb(0, 0, 0) -0.98px 0.14px 0px,
+			rgb(0, 0, 0) -0.65px -0.75px 0px, rgb(0, 0, 0) 0.28px -0.95px 0px,
+			rgb(0, 0, 0) 0.96px -0.27px 0px;
+	}
+}
+
+@media (max-width: 2300px) {
+	.um {
+		h1 {
+			width: 50%;
+			margin: auto;
+			margin-top: 20rem;
+			letter-spacing: 0.25rem;
+			font-size: 3.5rem;
+		}
+	}
+}
+@media (max-width: 2000px) {
+	.um {
+		h1 {
+			width: 50%;
+			margin: auto;
+			margin-top: 20rem;
+			letter-spacing: 0.25rem;
+			font-size: 3.15rem;
+		}
+	}
+}

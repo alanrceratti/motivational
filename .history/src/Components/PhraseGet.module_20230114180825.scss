@@ -1,0 +1,12 @@
+.mainContainerr {
+	display: grid;
+	grid-template-columns: auto 2fr;
+	height: 100%;	
+}
+
+@media (max-width: 26rem) {
+	.mainContainerr{display: grid;
+	grid-template-columns: auto 2fr;
+	height: 100%;	
+}
+
