@@ -36,22 +36,22 @@ function PhraseGet() {
 	};
 
 	// function to map all the phrases and categories
-	// async function fetchCount() {
-	// 	const response = await fetch(
-	// 		`http://127.0.0.1:200/api/categories/all/`
-	// 	);
-	// 	const json = await response.json();
-	// 	console.log(idLists);
+	async function fetchCount() {
+		const response = await fetch(
+			`http://127.0.0.1:200/api/categories/all/`
+		);
+		const json = await response.json();
+		console.log(idLists);
 
-	// 	json.map((category) => {
-	// 		const categoryId = category.id;
-	// 		const phraseIds = category.phrases.map((phrase) => phrase.id);
-	// 		idLists[categoryId] = phraseIds;
-	// 	});
-	// }
-	// useEffect(() => {
-	// 	fetchCount();
-	// }, []);
+		json.map((category) => {
+			const categoryId = category.id;
+			const phraseIds = category.phrases.map((phrase) => phrase.id);
+			idLists[categoryId] = phraseIds;
+		});
+	}
+	useEffect(() => {
+		fetchCount();
+	}, []);
 
 	// function to handle changes in the category select element
 	function handleChangeCategory(e) {

@@ -35,7 +35,7 @@ function PhraseGet() {
 		5: [13, 14],
 	};
 
-	// function to map all the phrases and categories
+	//function to map all the phrases and categories
 	// async function fetchCount() {
 	// 	const response = await fetch(
 	// 		`http://127.0.0.1:200/api/categories/all/`

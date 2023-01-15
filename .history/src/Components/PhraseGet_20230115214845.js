@@ -28,30 +28,38 @@ function PhraseGet() {
 
 	// Object containing arrays of numbers associated with each category
 	const idLists = {
-		1: [7, 8, 9, 21, 22],
-		2: [10, 18, 19, 20],
-		3: [11, 12],
-		4: [15, 16, 17],
-		5: [13, 14],
+		[7, 8, 9, 21, 22]
+		2
+		: 
+	[10, 18, 19, 20]
+		3
+		: 
+	 [11, 12]
+		4
+		: 
+[15, 16, 17]
+		5
+		: 
+		(2) [13, 14]
 	};
 
 	// function to map all the phrases and categories
-	// async function fetchCount() {
-	// 	const response = await fetch(
-	// 		`http://127.0.0.1:200/api/categories/all/`
-	// 	);
-	// 	const json = await response.json();
-	// 	console.log(idLists);
+	async function fetchCount() {
+		const response = await fetch(
+			`http://127.0.0.1:200/api/categories/all/`
+		);
+		const json = await response.json();
+		console.log(idLists);
 
-	// 	json.map((category) => {
-	// 		const categoryId = category.id;
-	// 		const phraseIds = category.phrases.map((phrase) => phrase.id);
-	// 		idLists[categoryId] = phraseIds;
-	// 	});
-	// }
-	// useEffect(() => {
-	// 	fetchCount();
-	// }, []);
+		json.map((category) => {
+			const categoryId = category.id;
+			const phraseIds = category.phrases.map((phrase) => phrase.id);
+			idLists[categoryId] = phraseIds;
+		});
+	}
+	useEffect(() => {
+		fetchCount();
+	}, []);
 
 	// function to handle changes in the category select element
 	function handleChangeCategory(e) {

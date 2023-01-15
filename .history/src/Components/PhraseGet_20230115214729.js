@@ -35,7 +35,7 @@ function PhraseGet() {
 		5: [13, 14],
 	};
 
-	// function to map all the phrases and categories
+	//function to map all the phrases and categories
 	// async function fetchCount() {
 	// 	const response = await fetch(
 	// 		`http://127.0.0.1:200/api/categories/all/`
@@ -97,8 +97,8 @@ function PhraseGet() {
 	async function fetchOptions() {
 		// fetch data from api using fetch function
 		const response = await fetch(
-			`https://motivational-api-2kzjz.ondigitalocean.app/api/categories/all/`
-			// `http://127.0.0.1:200/api/categories/all/`
+			// `https://motivational-api-2kzjz.ondigitalocean.app/api/categories/all/`
+			`http://127.0.0.1:200/api/categories/all/`
 		);
 		// parse response to json
 		const json = await response.json();
