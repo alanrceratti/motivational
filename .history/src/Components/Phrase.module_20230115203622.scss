@@ -1,0 +1,223 @@
+.um {
+	div {
+		display: flex;
+		height: 80vh;
+		position: static;
+		justify-content: center;
+		align-items: center;
+	}
+	img {
+		aspect-ratio: 7/4;
+		width: 60vw;
+		object-fit: fill;
+		border: 2px inset #000000;
+		border-radius: 100px 250px 100px 250px;
+		opacity: 1;
+		position: absolute;
+	}
+	h1 {
+		width: 50%;
+		margin: auto;
+		margin-top: 15rem;
+		z-index: 100;
+		backdrop-filter: blur(12px) saturate(176%);
+		-webkit-backdrop-filter: blur(12px) saturate(176%);
+		background-color: rgba(0, 0, 0, 0.3);
+		letter-spacing: 0.25rem;
+		font-size: 4rem;
+		font-family: "Patua One";
+		text-align: center;
+		text-shadow: rgb(0, 0, 0) 0.3rem 0px 0px, rgb(0, 0, 0) 0.54px 0.84px 0px,
+			rgb(0, 0, 0) -0.41px 0.9px 0px, rgb(0, 0, 0) -0.98px 0.14px 0px,
+			rgb(0, 0, 0) -0.65px -0.75px 0px, rgb(0, 0, 0) 0.28px -0.95px 0px,
+			rgb(0, 0, 0) 0.96px -0.27px 0px;
+	}
+}
+li {
+	position: relative;
+	list-style: none;
+	float: left;
+	margin: 10px;
+}
+.outerBorder {
+	background-color: #1e1e1e;
+	height: 385px;
+	position: relative;
+	width: 278px;
+	margin: 0 auto;
+	-webkit-box-shadow: 4px 7px 14px rgba(50, 50, 50, 0.44);
+	-moz-box-shadow: 4px 7px 14px rgba(50, 50, 50, 0.44);
+	box-shadow: 4px 7px 14px rgba(50, 50, 50, 0.44);
+	background: -moz-linear-gradient(
+		-45deg,
+		#000000 0%,
+		#4c4c4c 83%,
+		#000000 100%
+	);
+	background: -webkit-gradient(
+		linear,
+		left top,
+		right bottom,
+		color-stop(0%, #000000),
+		color-stop(83%, #4c4c4c),
+		color-stop(100%, #000000)
+	);
+	background: -webkit-linear-gradient(
+		-45deg,
+		#000000 0%,
+		#4c4c4c 83%,
+		#000000 100%
+	);
+	background: -o-linear-gradient(
+		-45deg,
+		#000000 0%,
+		#4c4c4c 83%,
+		#000000 100%
+	);
+	background: -ms-linear-gradient(
+		-45deg,
+		#000000 0%,
+		#4c4c4c 83%,
+		#000000 100%
+	);
+	background: linear-gradient(135deg, #000000 0%, #4c4c4c 83%, #000000 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=1 );
+}
+
+.innerBorder {
+	background: #ccc url(http://aertl.bitweb1.nwtc.edu/php/css/images/matte.png)
+		top left repeat;
+	height: 355px;
+	left: 16px;
+	position: absolute;
+	top: 16px;
+	width: 245px;
+	-webkit-box-shadow: inset 5px 5px 12px rgba(50, 50, 50, 0.44);
+	-moz-box-shadow: inset 5px 5px 12px rgba(50, 50, 50, 0.44);
+	box-shadow: inset 5px 5px 12px rgba(50, 50, 50, 0.44);
+	overflow: hidden;
+}
+
+li img {
+	left: 15px;
+	position: relative;
+	top: 16px;
+}
+@media (max-width: 150rem) {
+	.um {
+		h1 {
+			width: 50%;
+			margin: auto;
+			margin-top: 20rem;
+			letter-spacing: 0.25rem;
+			font-size: 3.5rem;
+		}
+	}
+}
+@media (max-width: 125rem) {
+	.um {
+		h1 {
+			width: 50%;
+			margin: auto;
+			margin-top: 20rem;
+
+			font-size: 3rem;
+		}
+	}
+}
+@media (max-width: 110rem) {
+	.um {
+		h1 {
+			width: 50%;
+			margin: auto;
+			margin-top: 22rem;
+
+			font-size: 2.55rem;
+		}
+	}
+}
+@media (max-width: 90rem) {
+	.um {
+		h1 {
+			width: 50%;
+			margin: auto;
+			margin-top: 23rem;
+
+			font-size: 2rem;
+		}
+	}
+}
+@media (max-width: 80rem) {
+	.um {
+		h1 {
+			width: 50%;
+			margin: auto;
+			margin-top: 25rem;
+			letter-spacing: 0.25rem;
+			font-size: 1.75rem;
+		}
+	}
+}
+@media (max-width: 40rem) {
+	.um {
+		h1 {
+			width: 65%;
+			height: fit-content;
+			margin: 10% 15%;
+			letter-spacing: 0.25rem;
+			font-size: 1.35rem;
+			position: absolute;
+			font-weight: 100;
+			text-shadow: rgb(0, 0, 0) 0.1rem 0px 0px,
+				rgb(0, 0, 0) 0.54px 0.84px 0px, rgb(0, 0, 0) -0.41px 0.9px 0px,
+				rgb(0, 0, 0) -0.98px 0.14px 0px,
+				rgb(0, 0, 0) -0.65px -0.75px 0px,
+				rgb(0, 0, 0) 0.28px -0.95px 0px, rgb(0, 0, 0) 0.96px -0.27px 0px;
+		}
+
+		div {
+			display: block;
+			height: 50vh;
+			width: 100%;
+			position: static;
+			margin: 0 auto;
+			margin-top: 4rem;
+		}
+		img {
+			width: 95%;
+			object-fit: fill;
+			border: 2px inset #000000;
+			border-radius: 50px 125px 50px 125px;
+			opacity: 0.9;
+			position: absolute;
+		}
+	}
+}
+@media (max-width: 26rem) {
+	.um {
+		h1 {
+			width: 90%;
+			margin: auto;
+			margin-top: 20rem;
+			letter-spacing: 0.25rem;
+			font-size: 1rem;
+		}
+	}
+	div {
+		display: block;
+		height: 80vh;
+		margin: 3rem;
+		width: 80vw;
+		position: static;
+		justify-content: center;
+		align-items: center;
+	}
+	img {
+		width: 60vw;
+		object-fit: fill;
+		border: 2px inset #000000;
+		border-radius: 100px 250px 100px 250px;
+		opacity: 0.9;
+		position: absolute;
+	}
+}

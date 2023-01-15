@@ -1,0 +1,21 @@
+.mainContainerr {
+	display: grid;
+	grid-template-columns: auto 2fr;
+	height: 100%;
+	width: 80%;
+	margin: auto auto;
+}
+
+@media (max-width: 26rem) {
+	.mainContainerr {
+		display: block;
+		height: 100%;
+	}
+}
+
+@media (max-width: 40rem) {
+	.mainContainerr {
+		display: block;
+		height: 100%;
+	}
+}
