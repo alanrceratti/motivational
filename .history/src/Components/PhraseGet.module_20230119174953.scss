@@ -1,0 +1,32 @@
+.mainContainer {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	grid-template-rows: 1fr 1fr;
+	height: 100%;
+	margin: 0 10rem;
+}
+
+@media (max-width: 100rem) {
+	.mainContainerr {
+		display: grid;
+		height: 90%;
+		width: 100%;
+	}
+}
+
+@media (max-width: 40rem) {
+	.mainContainerr {
+		display: block;
+		height: 100%;
+	}
+}
+
+@media (max-width: 26rem) {
+	.mainContainer {
+		display: block;
+		grid-template-columns: 1fr 4fr;
+		grid-template-rows: 1fr 1fr;
+		height: 100%;
+		margin: 0 10rem;
+	}
+}
