@@ -1,0 +1,31 @@
+.mainContainerr {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto auto auto;
+
+	height: 100%;
+
+	margin: 0 10rem;
+}
+
+// @media (max-width: 100rem) {
+// 	.mainContainerr {
+// 		display: block;
+// 		height: 90%;
+// 		width: 100%;
+// 	}
+// }
+
+// @media (max-width: 40rem) {
+// 	.mainContainerr {
+// 		display: block;
+// 		height: 100%;
+// 	}
+// }
+
+// @media (max-width: 26rem) {
+// 	.mainContainerr {
+// 		display: block;
+// 		height: 100%;
+// 	}
+// }

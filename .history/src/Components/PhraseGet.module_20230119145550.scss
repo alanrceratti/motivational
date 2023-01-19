@@ -1,0 +1,28 @@
+.mainContainer {
+	display: block;
+
+	height: 100%;
+	margin: 0 10rem;
+}
+
+@media (max-width: 100rem) {
+	.mainContainerr {
+		display: grid;
+		height: 90%;
+		width: 100%;
+	}
+}
+
+@media (max-width: 40rem) {
+	.mainContainerr {
+		display: block;
+		height: 100%;
+	}
+}
+
+@media (max-width: 26rem) {
+	.mainContainerr {
+		display: block;
+		height: 100%;
+	}
+}
