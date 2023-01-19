@@ -3,7 +3,7 @@ import { Loading } from "./Loading";
 import styles from "./Phrase.module.scss";
 
 function Phrase(props) {
-	const { data, handleNext } = props;
+	const { data,  } = props;
 	return (
 		<section className={styles.um}>
 			<div>

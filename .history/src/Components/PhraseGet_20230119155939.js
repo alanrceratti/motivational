@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import styles from "../Components/PhraseGet.module.scss";
-import Options from "../Options";
+import styles from "./PhraseGet.module.scss";
+import { CategorySelect } from "./CategorySelect";
+import { Loading } from "./Loading";
+import { Phrase } from "./Phrase";
 
 function PhraseGet() {
 	// state variable to store the selected category id
@@ -14,46 +16,49 @@ function PhraseGet() {
 	// state variable to indicate if the image is currently being loaded
 	const [loadingImg, setLoadingImg] = useState(true);
 	// state variable to store the current random number
-	const [number, setNumber] = useState(7);
+	const [number, setNumber] = useState(8);
 	// commented out state variable for future use, possibly for storing count of words
 	// const [count, setCount] = useState(0);
-	const [showSelect, setShowSelect] = useState(true);
+	const [showSelect, setShowSelect] = useState(false);
 
 	// Function to toggle visibility of select element
 	const handleClick = () => {
 		setShowSelect(!showSelect);
 	};
 
-	// Object containing arrays of numbers associated with each category
-	const idLists = {
-		1: [7, 8, 9, 21, 22],
-		2: [10, 18, 19, 20],
-		3: [11, 12],
-		4: [15, 16, 17],
-		5: [13, 14],
-	};
-	// async function fetchCount() {
-	// 	const response = await fetch(
-	// 		`http://127.0.0.1:200/api/categories/all/`
-	// 	);
-	// 	const json = await response.json();
-	// 	console.log(idLists);
+	const handleNext = () => {
+		setNumber(1);
 
-	// 	json.map((category) => {
-	// 		const categoryId = category.id;
-	// 		const phraseIds = category.phrases.map((phrase) => phrase.id);
-	// 		idLists[categoryId] = phraseIds;
-	// 	});
-	// }
-	// useEffect(() => {
-	// 	fetchCount();
-	// }, []);
+		fetchData();
+	};
+	// Object containing arrays of numbers associated with each category
+	const idLists = {};
+
+	// function to map all the phrases and categories
+	async function fetchCount() {
+		const response = await fetch(
+			`http://127.0.0.1:200/api/categories/all/`
+		);
+		const json = await response.json();
+		console.log(idLists);
+
+		json.map((category) => {
+			const categoryId = category.id;
+			const phraseIds = category.phrases.map((phrase) => phrase.id);
+			idLists[categoryId] = phraseIds;
+		});
+	}
+	useEffect(() => {
+		fetchCount();
+	}, [idLists]);
 
 	// function to handle changes in the category select element
 	function handleChangeCategory(e) {
+		const categoryId = e.target.dataset.categoryId;
 		// set the selected category id
-		setCategoryId(e.target.value);
-		const selectedCategoryId = e.target.value;
+		setCategoryId(categoryId);
+
+		const selectedCategoryId = e.target.dataset.categoryId;
 		// Retrieve previous selected numbers for current category from local storage
 		const previousIdList =
 			JSON.parse(
@@ -82,7 +87,7 @@ function PhraseGet() {
 				JSON.stringify(previousIdList)
 			);
 		} else {
-			// if there are no more numbers available, remove the previousid1 array from local storage and log a message
+			// if there are no more numbers available, remove the previousid array from local storage and log a message
 			localStorage.removeItem(`previousid${selectedCategoryId}`);
 			console.log("acabou o 1");
 		}
@@ -91,6 +96,7 @@ function PhraseGet() {
 	async function fetchOptions() {
 		// fetch data from api using fetch function
 		const response = await fetch(
+			// `https://motivational-api-2kzjz.ondigitalocean.app/api/categories/all/`
 			`http://127.0.0.1:200/api/categories/all/`
 		);
 		// parse response to json
@@ -111,6 +117,7 @@ function PhraseGet() {
 	}, [categoryId]);
 
 	async function fetchData() {
+		setLoadingImg(true);
 		let retries = 0;
 		// maximum number of retries if response status is 404
 		const MAX_RETRIES = 3;
@@ -124,6 +131,7 @@ function PhraseGet() {
 			try {
 				response = await fetch(
 					`http://127.0.0.1:200/api/categories/${categoryId}/phrases/?filter_by_id=${number}`
+					// `	https://motivational-api-2kzjz.ondigitalocean.app/api/categories/${categoryId}/phrases/?filter_by_id=${number}`
 				);
 				// if response status is 404, increment retries
 				if (response.status === 404) {
@@ -157,36 +165,24 @@ function PhraseGet() {
 	}
 
 	return (
-		<section className={styles.mainContainerr}>
-			{loading ? (
-				<p>Loading......</p>
+		<section className={styles.mainContainer}>
+			{idLists.length <= 0 ? (
+				<Loading />
 			) : (
-				<div className={styles.options}>
-					<Options onClick={handleClick} />
-					<select
-						style={{ display: showSelect ? "block" : "none" }}
-						onChange={handleChangeCategory}
-					>
-						{options.map((option) => (
-							<option key={option.id} value={option.id}>
-								{option.category_name}
-							</option>
-						))}
-					</select>
-				</div>
+				<>
+					<CategorySelect
+						options={options}
+						handleChangeCategory={handleChangeCategory}
+						categoryId={categoryId}
+						loading={loading}
+						handleClick={handleClick}
+						showSelect={showSelect}
+						handleNext={handleNext}
+					/>
+				</>
 			)}
-			{loadingImg ? (
-				<h1>Loading</h1>
-			) : (
-				<div className={styles.um}>
-					<div>
-						{data && (
-							<img src={data.image_url} alt="image_phrase" />
-						)}
-						{data ? <h1>{data.phrase}</h1> : "Loading..."}
-					</div>
-				</div>
-			)}
+
+			{loadingImg ? <Loading /> : <Phrase data={data} />}
 		</section>
 	);
 }

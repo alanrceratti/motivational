@@ -61,7 +61,6 @@ function PhraseGet() {
 				`previousid${selectedCategoryId}`,
 				JSON.stringify(previousIdList)
 			);
-			fetchData();
 		} else {
 			// if there are no more numbers available, remove the previousid array from local storage and log a message
 			console.log("acabou");

@@ -61,11 +61,11 @@ function PhraseGet() {
 				`previousid${selectedCategoryId}`,
 				JSON.stringify(previousIdList)
 			);
-			fetchData();
 		} else {
 			// if there are no more numbers available, remove the previousid array from local storage and log a message
 			console.log("acabou");
 		}
+		fetchData();
 	}
 
 	// Object containing arrays of numbers associated with each category
@@ -174,7 +174,6 @@ function PhraseGet() {
 					// `http://127.0.0.1:200/api/categories/${categoryId}/phrases/?filter_by_id=${number}`
 					`	https://motivational-api-2kzjz.ondigitalocean.app/api/categories/${categoryId}/phrases/?filter_by_id=${number}`
 				);
-				console.log(`GET ${response.url} `);
 				// if response status is 404, increment retries
 				if (response.status === 404) {
 					retries++;
@@ -187,6 +186,9 @@ function PhraseGet() {
 					setLoadingImg(false);
 				}
 				// log response status and url
+				console.log(
+					`GET ${response.url} ${response.status} (${response.statusText})`
+				);
 			} catch (error) {
 				// log error
 				console.error("asdasdad");

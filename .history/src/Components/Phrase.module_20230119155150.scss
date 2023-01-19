@@ -43,15 +43,14 @@
 	}
 
 	.next {
-		margin: 0 auto;
-		margin-top: 1rem;
+        
 		border: none;
 		outline: none;
 		background-color: var(--color1);
-		padding: 0.8rem 1.8rem;
-		font-size: 1rem;
+		padding: 10px 20px;
+		font-size: 12px;
 		font-weight: 700;
-		color: rgb(0, 0, 0);
+		color: #fff;
 		border-radius: 5px;
 		transition: all ease 0.1s;
 		box-shadow: 0px 5px 0px 0px var(--color2);

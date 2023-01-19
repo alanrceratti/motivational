@@ -27,6 +27,7 @@ function PhraseGet() {
 
 	const handleNext = () => {
 		handleChangeNext(categoryId);
+		fetchData();
 	};
 
 	function handleChangeNext(categoryId) {
@@ -51,7 +52,7 @@ function PhraseGet() {
 			);
 			// select random number from filteredIdList array
 			const randomNumber = filteredIdList[randomIndex];
-
+			
 			// set the new random number
 			setNumber(randomNumber);
 			// add new randomNumber to the previousIdList array
@@ -61,11 +62,13 @@ function PhraseGet() {
 				`previousid${selectedCategoryId}`,
 				JSON.stringify(previousIdList)
 			);
-			fetchData();
+			
 		} else {
 			// if there are no more numbers available, remove the previousid array from local storage and log a message
 			console.log("acabou");
 		}
+		await new Promise((resolve) => setTimeout(resolve, 1000));
+
 	}
 
 	// Object containing arrays of numbers associated with each category
@@ -92,45 +95,41 @@ function PhraseGet() {
 
 	// function to handle changes in the category select element
 	function handleChangeCategory(e) {
-		const catclick = e.target.dataset.categoryId;
+		const categoryId = e.target.dataset.categoryId;
 		// set the selected category id
-		if (catclick !== categoryId) {
-			setCategoryId(catclick);
+		setCategoryId(categoryId);
 
-			const selectedCategoryId = e.target.dataset.categoryId;
-			// Retrieve previous selected numbers for current category from local storage
-			const previousIdList =
-				JSON.parse(
-					localStorage.getItem(`previousid${selectedCategoryId}`)
-				) || [];
+		const selectedCategoryId = e.target.dataset.categoryId;
+		// Retrieve previous selected numbers for current category from local storage
+		const previousIdList =
+			JSON.parse(
+				localStorage.getItem(`previousid${selectedCategoryId}`)
+			) || [];
 
-			// filter out previously selected numbers from the array
-			const filteredIdList = idLists[selectedCategoryId].filter(
-				(number) => !previousIdList.includes(number)
+		// filter out previously selected numbers from the array
+		const filteredIdList = idLists[selectedCategoryId].filter(
+			(number) => !previousIdList.includes(number)
+		);
+
+		// if there are still numbers available in filteredIdList array
+		if (filteredIdList.length > 0) {
+			const randomIndex = Math.floor(
+				Math.random() * filteredIdList.length
 			);
-
-			// if there are still numbers available in filteredIdList array
-			if (filteredIdList.length > 0) {
-				const randomIndex = Math.floor(
-					Math.random() * filteredIdList.length
-				);
-				// select random number from filteredIdList array
-				const randomNumber = filteredIdList[randomIndex];
-				// set the new random number
-				setNumber(randomNumber);
-				// add new randomNumber to the previousIdList array
-				previousIdList.push(randomNumber);
-				// store the updated previousIdList array in local storage
-				localStorage.setItem(
-					`previousid${selectedCategoryId}`,
-					JSON.stringify(previousIdList)
-				);
-			} else {
-				// if there are no more numbers available, remove the previousid array from local storage and log a message
-				console.log("acabou");
-			}
+			// select random number from filteredIdList array
+			const randomNumber = filteredIdList[randomIndex];
+			// set the new random number
+			setNumber(randomNumber);
+			// add new randomNumber to the previousIdList array
+			previousIdList.push(randomNumber);
+			// store the updated previousIdList array in local storage
+			localStorage.setItem(
+				`previousid${selectedCategoryId}`,
+				JSON.stringify(previousIdList)
+			);
 		} else {
-			setCategoryId(categoryId);
+			// if there are no more numbers available, remove the previousid array from local storage and log a message
+			console.log("acabou");
 		}
 	}
 
@@ -174,7 +173,6 @@ function PhraseGet() {
 					// `http://127.0.0.1:200/api/categories/${categoryId}/phrases/?filter_by_id=${number}`
 					`	https://motivational-api-2kzjz.ondigitalocean.app/api/categories/${categoryId}/phrases/?filter_by_id=${number}`
 				);
-				console.log(`GET ${response.url} `);
 				// if response status is 404, increment retries
 				if (response.status === 404) {
 					retries++;
@@ -187,6 +185,9 @@ function PhraseGet() {
 					setLoadingImg(false);
 				}
 				// log response status and url
+				console.log(
+					`GET ${response.url} ${response.status} (${response.statusText})`
+				);
 			} catch (error) {
 				// log error
 				console.error("asdasdad");

@@ -1,0 +1,48 @@
+.mainContainer {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	grid-template-rows: 1fr 1fr;
+	height: 100%;
+	margin: 0 10rem;
+
+	.next {
+		button {
+			border: none;
+			outline: none;
+			background-color: #6c5ce7;
+			padding: 10px 20px;
+			font-size: 12px;
+			font-weight: 700;
+			color: #fff;
+			border-radius: 5px;
+			transition: all ease 0.1s;
+			box-shadow: 0px 5px 0px 0px #a29bfe;
+		}
+
+		button:active {
+			transform: translateY(5px);
+			box-shadow: 0px 0px 0px 0px #a29bfe;
+		}
+	}
+}
+@media (max-width: 100rem) {
+	.mainContainerr {
+		display: grid;
+		height: 90%;
+		width: 100%;
+	}
+}
+
+@media (max-width: 40rem) {
+	.mainContainerr {
+		display: block;
+		height: 100%;
+	}
+}
+
+@media (max-width: 26rem) {
+	.mainContainerr {
+		display: block;
+		height: 100%;
+	}
+}
