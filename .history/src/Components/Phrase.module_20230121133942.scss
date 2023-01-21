@@ -1,14 +1,13 @@
 .um {
 	display: block;
-	height: fit-content;
+	height: 50vh;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 2rem;
 	div {
 		grid-column: 2/3;
 		grid-row: 1/3;
 		position: relative;
-		margin: 3rem;
+		margin: 2rem;
 	}
 	img {
 		aspect-ratio: 3.5/2;

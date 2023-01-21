@@ -8,7 +8,6 @@
 	.mainContainer {
 		display: grid;
 		grid-template-rows: auto;
-		grid-auto-flow: row;
 	}
 }
 @media (max-width: 90rem) {

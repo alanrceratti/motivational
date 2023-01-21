@@ -1,38 +1,43 @@
 .mainContainer {
 	display: grid;
-	grid-template-columns: 1fr auto;
-	grid-template-rows: auto;
+	grid-template-columns: 1fr 4fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	height: 87vh;
 }
 
 @media (max-width: 104rem) {
 	.mainContainer {
 		display: grid;
-		grid-template-rows: auto;
-		grid-auto-flow: row;
+		height: 77vh;
+		grid-template-rows: 1fr 1fr;
 	}
 }
 @media (max-width: 90rem) {
 	.mainContainer {
+		height: 67vh;
 	}
 }
 
 @media (max-width: 84rem) {
 	.mainContainer {
-		height: fit-content;
+		height: 100%;
 	}
 }
 @media (max-width: 68rem) {
 	.mainContainer {
 		display: block;
+		height: 100%;
 	}
 }
 
 @media (max-width: 46rem) {
 	.mainContainer {
+		height: 100%;
 	}
 }
 
 @media (max-width: 26rem) {
 	.mainContainer {
+		height: 100%;
 	}
 }
