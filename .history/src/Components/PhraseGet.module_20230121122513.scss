@@ -1,0 +1,50 @@
+.mainContainer {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	height: 90vh;
+}
+
+@media (max-width: 104rem) {
+	.mainContainer {
+		display: grid;
+		height: 80vh;
+		grid-template-rows: 1fr 1fr;
+	}
+}
+@media (max-width: 90rem) {
+	.mainContainer {
+		display: grid;
+		height: 70vh;
+	}
+}
+
+@media (max-width: 84rem) {
+	.mainContainer {
+		display: grid;
+		height: 60vh;
+	}
+}
+@media (max-width: 68rem) {
+	.mainContainer {
+		display: grid;
+		height: 100vh;
+		grid-template-rows: 1fr 1fr;
+	}
+}
+
+@media (max-width: 40rem) {
+	.mainContainer {
+		display: block;
+		height: 100%;
+	}
+}
+
+@media (max-width: 26rem) {
+	.mainContainer {
+		display: block;
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+	}
+}

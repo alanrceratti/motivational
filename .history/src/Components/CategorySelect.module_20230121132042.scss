@@ -1,0 +1,75 @@
+.mainContainerr {
+	grid-column: 1/2;
+	grid-row: 1/3;
+
+	.options {
+		max-width: fit-content;
+
+		.div {
+			border: 1px solid #303030;
+			background: #040404;
+			h1 {
+				font-size: 1.2rem;
+				text-align: center;
+				color: rgb(255, 255, 255);
+				cursor: pointer;
+				font-family: "Patua One";
+				font-weight: bold;
+				letter-spacing: 2px;
+			}
+		}
+		div {
+			margin: 0 auto;
+			position: relative;
+			padding: 1em 1.8em;
+			outline: none;
+			text-align: center;
+
+			color: var(--color1);
+			text-transform: uppercase;
+
+			overflow: hidden;
+			-webkit-transition: 0.2s;
+			transition: 0.2s;
+			border-radius: 10px;
+
+			width: fit-content;
+			border: none;
+		}
+	}
+
+	.options .h1:hover {
+		color: var(--color1);
+	}
+}
+@media (max-width: 40rem) {
+	.mainContainerr {
+			.options {
+				.div {
+				border: 1px solid #303030;
+				background: #040404;
+				h1 {
+					font-size: 1.2rem;
+					text-align: center;
+					color: rgb(255, 255, 255);
+					cursor: pointer;
+					font-family: "Patua One";
+					font-weight: bold;
+					letter-spacing: 2px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 26rem) {
+	.options {
+		max-width: fit-content;
+		.h1 {
+			font-size: 1.2rem;
+			text-align: center;
+			color: rgb(255, 255, 255);
+			cursor: pointer;
+		}
+	}
+}
