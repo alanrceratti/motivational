@@ -13,12 +13,7 @@ function CategorySelect(props) {
 			{loading ? (
 				<p>Loading......</p>
 			) : (
-				<motion.div
-					animate={{ y: 0 }}
-					initial={{ y: -20 }}
-					transition={{ duration: 0.5 }}
-					className={styles.options}
-				>
+				<motion.div className={styles.options}>
 					<div>
 						<Title className={styles.title} />
 					</div>

@@ -12,7 +12,7 @@ function PhraseGet() {
 	// state variable to store the options for the select element
 	const [options, setOptions] = useState([]);
 	// state variable to indicate if the data is currently being loaded
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(false);
 	// state variable to indicate if the image is currently being loaded
 	const [loadingImg, setLoadingImg] = useState(true);
 	// state variable to store the current random number

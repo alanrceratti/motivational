@@ -16,7 +16,7 @@ function CategorySelect(props) {
 				<motion.div
 					animate={{ y: 0 }}
 					initial={{ y: -20 }}
-					transition={{ duration: 0.5 }}
+					transition={{ duration: 1.5 }}
 					className={styles.options}
 				>
 					<div>

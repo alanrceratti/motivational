@@ -7,11 +7,7 @@ function Phrase(props) {
 	const { data, handleNext } = props;
 	return (
 		<section className={styles.um}>
-			<motion.div
-				animate={{ x: 0 }}
-				initial={{ x: -100 }}
-				transition={{ duration: 0.3 }}
-			>
+			<motion.div>
 				{data && <img src={data.image_url} alt="image_phrase" />}
 				{data ? <h1>{data.phrase}</h1> : <Loading />}
 			</motion.div>

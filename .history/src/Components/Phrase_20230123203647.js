@@ -8,8 +8,8 @@ function Phrase(props) {
 	return (
 		<section className={styles.um}>
 			<motion.div
-				animate={{ x: 0 }}
-				initial={{ x: -100 }}
+				animate={({ x: 0 }, { opacity: 1 })}
+				initial={({ x: -100 }, { opacity: 0 })}
 				transition={{ duration: 0.3 }}
 			>
 				{data && <img src={data.image_url} alt="image_phrase" />}

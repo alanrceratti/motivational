@@ -4,6 +4,7 @@ import { CategorySelect } from "./CategorySelect";
 import { Loading } from "./Loading";
 import { Phrase } from "./Phrase";
 
+
 function PhraseGet() {
 	// state variable to store the selected category id
 	const [categoryId, setCategoryId] = useState(1);
@@ -245,6 +246,7 @@ function PhraseGet() {
 			) : (
 				<Phrase data={data} handleNext={handleNext} />
 			)}
+		
 		</section>
 	);
 }
