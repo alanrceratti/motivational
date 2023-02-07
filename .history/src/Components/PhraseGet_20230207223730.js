@@ -106,15 +106,11 @@ function PhraseGet() {
 	const IdFromLocalStorage = localStorage.getItem("currentID");
 	const categoryIdFromLocalStorage = localStorage.getItem("currentCategory");
 	useEffect(() => {
-		if (categoryIdFromLocalStorage) {
+		if (categoryIdFromLocalStorage.length >) {
 			setCategoryId(
 				parseInt(categoryIdFromLocalStorage),
 				setNumber(parseInt(IdFromLocalStorage))
 			);
-		} else {
-			setTimeout(() => {
-				window.location.reload();
-			}, 2000);
 		}
 		fetchCount();
 	}, []);

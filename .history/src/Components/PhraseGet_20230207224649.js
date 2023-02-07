@@ -79,6 +79,11 @@ function PhraseGet() {
 		}
 	}
 
+	useEffect(() => {
+		setTimeout(() => {
+			window.location.reload();
+		}, 5000);
+	}, []);
 	//////////////////////////////////////////////////////////////////////
 	// 	// Object containing arrays of numbers associated with each category
 	const idLists = {};
@@ -111,10 +116,6 @@ function PhraseGet() {
 				parseInt(categoryIdFromLocalStorage),
 				setNumber(parseInt(IdFromLocalStorage))
 			);
-		} else {
-			setTimeout(() => {
-				window.location.reload();
-			}, 2000);
 		}
 		fetchCount();
 	}, []);

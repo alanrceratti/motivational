@@ -112,9 +112,8 @@ function PhraseGet() {
 				setNumber(parseInt(IdFromLocalStorage))
 			);
 		} else {
-			setTimeout(() => {
-				window.location.reload();
-			}, 2000);
+			setCategoryId(1);
+			setNumber(8);
 		}
 		fetchCount();
 	}, []);

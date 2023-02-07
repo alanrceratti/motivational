@@ -18,6 +18,7 @@ function PhraseGet() {
 	const [loadingImg, setLoadingImg] = useState(true);
 	// state variable to store the current random number
 	const [number, setNumber] = useState(8);
+	const [refreshed, setRefreshed] = useState(false);
 
 	const [showSelect, setShowSelect] = useState(false);
 
@@ -111,10 +112,6 @@ function PhraseGet() {
 				parseInt(categoryIdFromLocalStorage),
 				setNumber(parseInt(IdFromLocalStorage))
 			);
-		} else {
-			setTimeout(() => {
-				window.location.reload();
-			}, 2000);
 		}
 		fetchCount();
 	}, []);

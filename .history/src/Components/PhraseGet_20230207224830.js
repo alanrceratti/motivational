@@ -18,6 +18,7 @@ function PhraseGet() {
 	const [loadingImg, setLoadingImg] = useState(true);
 	// state variable to store the current random number
 	const [number, setNumber] = useState(8);
+	const [refreshed, setRefreshed] = useState(false);
 
 	const [showSelect, setShowSelect] = useState(false);
 
@@ -78,7 +79,12 @@ function PhraseGet() {
 			// if there are no more numbers available, remove the previousid array from local storage and log a message
 		}
 	}
-
+	useEffect(() => {
+		setTimeout(() => {
+			window.location.reload();
+			setRefreshed
+		}, 5000);
+	}, []);
 	//////////////////////////////////////////////////////////////////////
 	// 	// Object containing arrays of numbers associated with each category
 	const idLists = {};
@@ -111,10 +117,6 @@ function PhraseGet() {
 				parseInt(categoryIdFromLocalStorage),
 				setNumber(parseInt(IdFromLocalStorage))
 			);
-		} else {
-			setTimeout(() => {
-				window.location.reload();
-			}, 2000);
 		}
 		fetchCount();
 	}, []);

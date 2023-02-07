@@ -95,6 +95,7 @@ function PhraseGet() {
 			const phraseIds = category.phrases.map((phrase) => phrase.id);
 			idLists[categoryId] = phraseIds;
 		});
+		
 	}
 
 	useEffect(() => {
@@ -111,10 +112,6 @@ function PhraseGet() {
 				parseInt(categoryIdFromLocalStorage),
 				setNumber(parseInt(IdFromLocalStorage))
 			);
-		} else {
-			setTimeout(() => {
-				window.location.reload();
-			}, 2000);
 		}
 		fetchCount();
 	}, []);
