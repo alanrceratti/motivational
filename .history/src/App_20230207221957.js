@@ -16,7 +16,7 @@ function App() {
 							path="/categories/:UrlCategoryId/phrases/:UrlPhraseId"
 							element={<Home />}
 						/>
-						<Route path="/" element={<PhraseGet />} />
+						<Route path="/" element={<Home />} />
 
 						{/* <Route path="/button" element={<Loading />} /> */}
 						<Route path="*" element={<div>Page not found</div>} />

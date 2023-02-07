@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
 	EmailShareButton,
 	FacebookShareButton,
@@ -20,11 +20,10 @@ import styles from "./TitleDown.module.scss";
 
 const TitleDown = () => {
 	const FullURL = window.location.href;
-	const [URL, SetURL] = useState("");
-	const URL2 = URL;
-	function handleClick2() {
-		SetURL(FullURL);
-		console.log("HASUIHD", URL);
+	console.log("HASUIHD", FullURL);
+const [URL, ]
+	function handleClick(){
+
 	}
 
 	return (
@@ -34,7 +33,7 @@ const TitleDown = () => {
 					Loved our quote?<br></br> Why not share your favorite?
 				</h1>
 
-				<button className={styles.button2} onClick={handleClick2}>
+				<button className={styles.button2}>
 					SHARE NOW
 					<div>
 						<EmailIcon size={32} round={true} />
@@ -45,7 +44,7 @@ const TitleDown = () => {
 						<WhatsappIcon size={32} round={true} />
 					</div>
 				</button>
-				<FacebookShareButton url={URL2}>
+				<FacebookShareButton url={FullURL}>
 					<FacebookIcon size={32} round={true} />
 				</FacebookShareButton>
 			</div>

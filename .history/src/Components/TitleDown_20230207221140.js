@@ -21,11 +21,11 @@ import styles from "./TitleDown.module.scss";
 const TitleDown = () => {
 	const FullURL = window.location.href;
 	const [URL, SetURL] = useState("");
-	const URL2 = URL;
+
 	function handleClick2() {
-		SetURL(FullURL);
 		console.log("HASUIHD", URL);
 	}
+	useEffect(() => handleClick2());
 
 	return (
 		<section>
@@ -36,16 +36,17 @@ const TitleDown = () => {
 
 				<button className={styles.button2} onClick={handleClick2}>
 					SHARE NOW
-					<div>
-						<EmailIcon size={32} round={true} />
-
-						<FacebookMessengerIcon size={32} round={true} />
-						<LinkedinIcon size={32} round={true} />
-						<TwitterIcon size={32} round={true} />
-						<WhatsappIcon size={32} round={true} />
-					</div>
 				</button>
-				<FacebookShareButton url={URL2}>
+				<div>
+					<EmailIcon size={32} round={true} />
+
+					<FacebookMessengerIcon size={32} round={true} />
+					<LinkedinIcon size={32} round={true} />
+					<TwitterIcon size={32} round={true} />
+					<WhatsappIcon size={32} round={true} />
+				</div>
+
+				<FacebookShareButton url={FullURL}>
 					<FacebookIcon size={32} round={true} />
 				</FacebookShareButton>
 			</div>
