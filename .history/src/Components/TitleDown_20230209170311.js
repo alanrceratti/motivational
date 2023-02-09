@@ -70,7 +70,7 @@ const TitleDown = () => {
 							</TwitterShareButton>
 						</div>
 						<div>
-							<WhatsappShareButton url={URL2}>
+							<WhatsappShareButton url="www.google.com">
 								<WhatsappIcon size={32} round={true} />
 							</WhatsappShareButton>
 						</div>

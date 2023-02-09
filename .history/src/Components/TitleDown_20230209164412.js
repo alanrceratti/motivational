@@ -20,13 +20,16 @@ import styles from "./TitleDown.module.scss";
 
 const TitleDown = () => {
 	const FullURL = window.location.href;
-
+	const [URL, setURL] = useState("");
 	const [showIcons, setShowIcons] = useState(false);
 	const URL2 = URL;
+	function handleClick2() {
+		setURL(FullURL);
+	}
 
 	function ShowItems() {
 		setShowIcons(!showIcons);
-		console.log("HASUIHD", URL);
+		console.log("HASUIHD", FullURL);
 	}
 
 	return (
@@ -36,7 +39,10 @@ const TitleDown = () => {
 					Loved our quote?<br></br> Why not share your favorite?
 				</h1>
 				<div>
-					<button className={styles.button2} onClick={ShowItems}>
+					<button
+						className={styles.button2}
+						onClick={(handleClick2, ShowItems)}
+					>
 						SHARE NOW
 					</button>
 					<div
@@ -70,7 +76,7 @@ const TitleDown = () => {
 							</TwitterShareButton>
 						</div>
 						<div>
-							<WhatsappShareButton url={URL2}>
+							<WhatsappShareButton url="">
 								<WhatsappIcon size={32} round={true} />
 							</WhatsappShareButton>
 						</div>
