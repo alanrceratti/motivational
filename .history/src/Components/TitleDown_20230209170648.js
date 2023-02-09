@@ -23,14 +23,13 @@ const TitleDown = () => {
 	const [URL, setURL] = useState("");
 	const [showIcons, setShowIcons] = useState(false);
 	const URL2 = URL;
-
 	function handleClick() {
 		setURL(FullURL);
 	}
 
 	function ShowItems() {
-		handleClick();
 		setShowIcons(!showIcons);
+		console.log("HASUIHD", URL);
 	}
 
 	return (
@@ -74,7 +73,7 @@ const TitleDown = () => {
 							</TwitterShareButton>
 						</div>
 						<div>
-							<WhatsappShareButton url={URL2}>
+							<WhatsappShareButton url="www.google.com">
 								<WhatsappIcon size={32} round={true} />
 							</WhatsappShareButton>
 						</div>

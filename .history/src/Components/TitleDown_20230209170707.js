@@ -31,6 +31,7 @@ const TitleDown = () => {
 	function ShowItems() {
 		handleClick();
 		setShowIcons(!showIcons);
+		console.log("HASUIHD", URL);
 	}
 
 	return (

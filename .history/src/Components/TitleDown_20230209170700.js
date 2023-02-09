@@ -23,14 +23,14 @@ const TitleDown = () => {
 	const [URL, setURL] = useState("");
 	const [showIcons, setShowIcons] = useState(false);
 	const URL2 = URL;
-
+	
 	function handleClick() {
 		setURL(FullURL);
 	}
 
 	function ShowItems() {
-		handleClick();
 		setShowIcons(!showIcons);
+		console.log("HASUIHD", URL);
 	}
 
 	return (
