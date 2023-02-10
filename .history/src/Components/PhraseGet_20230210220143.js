@@ -43,6 +43,7 @@ function PhraseGet() {
 	const handleNextButton = () => {
 		handleChangeNext(categoryId);
 	};
+
 	function handleChangeNext(categoryId) {
 		// set the selected category id
 		setCategoryId(categoryId);
@@ -75,7 +76,6 @@ function PhraseGet() {
 			fetchData();
 		} else {
 			// if there are no more numbers available, remove the previousid array from local storage and log a message
-			console.log("acabou");
 		}
 	}
 
@@ -105,15 +105,6 @@ function PhraseGet() {
 
 	const IdFromLocalStorage = localStorage.getItem("currentID");
 	const categoryIdFromLocalStorage = localStorage.getItem("currentCategory");
-	useEffect(() => {
-		if (categoryIdFromLocalStorage) {
-			setCategoryId(
-				parseInt(categoryIdFromLocalStorage),
-				setNumber(parseInt(IdFromLocalStorage))
-			);
-		}
-		fetchCount();
-	}, []);
 
 	// 	// function to handle changes in the category select element
 	function handleChangeCategory(e) {
@@ -150,7 +141,6 @@ function PhraseGet() {
 				setShowSelect(false);
 			} else {
 				// if there are no more numbers available, remove the previousid array from local storage and log a message
-				console.log("acabou");
 			}
 		} else {
 			setCategoryId(categoryId);
@@ -187,12 +177,12 @@ function PhraseGet() {
 		fetchOptions();
 	}, [categoryId, number]);
 
+	useEffect(() => {
+		setCategoryId(UrlCategoryId);
+		setNumber(UrlPhraseId);
+	}, []);
+
 	async function fetchData() {
-		// if (!categoryIdFromLocalStorage) {
-		// 	setCategoryId(UrlCategoryId);
-		// 	setNumber(UrlPhraseId);
-		// }
-		console.log();
 		setLoadingImg(true);
 
 		let retries = 0;
@@ -237,12 +227,13 @@ function PhraseGet() {
 		if (previousIdList.length === idLists[categoryId].length) {
 			localStorage.removeItem(`previousid${categoryId}`);
 		}
-		// window.history.pushState(
-		// 	{},
-		// 	"",
-		// 	`/categories/${categoryId}/phrases/?filterd_by_id=${number}`
-		// );
+		const URL = window.history.pushState(
+			{},
+			"",
+			`/categories/${categoryId}/phrases/${number}`
+		);
 	}
+
 	return (
 		<section className={styles.mainContainer}>
 			{idLists.length <= 0 ? (

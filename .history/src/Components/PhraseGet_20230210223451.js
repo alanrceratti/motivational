@@ -17,43 +17,36 @@ function PhraseGet() {
 	// state variable to indicate if the image is currently being loaded
 	const [loadingImg, setLoadingImg] = useState(true);
 	// state variable to store the current random number
-	const [number, setNumber] = useState(8);
+	const [number, setNumber] = useState(5);
 
 	const [showSelect, setShowSelect] = useState(false);
 
 	const { UrlCategoryId, UrlPhraseId } = useParams();
 
-	const location = useLocation();
-
-	// useEffect(() => {
-	// 	setCategoryId(UrlCategoryId || 1);
-	// }, [UrlCategoryId]);
-
-	// useEffect(() => {
-	// 	if (categoryId) {
-	// 		fetch(
-	// 			`http://localhost:3000/categories/${categoryId}/phrases/?${
-	// 				UrlPhraseId || 8
-	// 			}`
-	// 		)
-	// 			.then((response) => response.json())
-	// 			.then((data) => {
-	// 				setData(data);
-	// 				setLoading(false);
-	// 			});
-	// 	}
-	// }, [categoryId, UrlPhraseId]);
+	useEffect(() => {
+		fetch(`http://localhost:3000/category/${categoryId}/phrase/${number}`)
+			.then((response) => response.json())
+			.then((data) => {
+				setCategoryId(data.categoryId);
+				setNumber(data.phrase);
+			});
+	}, [categoryId, number]);
+	console.log("hueheueuh", UrlCategoryId, UrlPhraseId);
 
 	////////////////////////////////////////////////////////
 
 	/////////////////////////////////////////////////////////////////////////
 	// 	// Function to toggle visibility of select element
-	const handleClick = () => {
+	const [selectedCategory, setSelectedCategory] = useState(null);
+	const handleClick = (e) => {
 		setShowSelect(!showSelect);
+		setSelectedCategory(e.target.dataset.categoryId);
 	};
+
 	const handleNextButton = () => {
 		handleChangeNext(categoryId);
 	};
+
 	function handleChangeNext(categoryId) {
 		// set the selected category id
 		setCategoryId(categoryId);
@@ -86,7 +79,6 @@ function PhraseGet() {
 			fetchData();
 		} else {
 			// if there are no more numbers available, remove the previousid array from local storage and log a message
-			console.log("acabou");
 		}
 	}
 
@@ -96,8 +88,8 @@ function PhraseGet() {
 	// 	// function to map all the phrases and categories
 	async function fetchCount() {
 		const response = await fetch(
-			// `https://motivational-api-2kzjz.ondigitalocean.app/api/categories/all/`
-			`http://127.0.0.1:200/api/categories/all/`
+			`https://motivational-api-2kzjz.ondigitalocean.app/api/categories/all/`
+			// `http://127.0.0.1:200/api/categories/all/`
 		);
 		const json = await response.json();
 		console.log(idLists);
@@ -116,15 +108,6 @@ function PhraseGet() {
 
 	const IdFromLocalStorage = localStorage.getItem("currentID");
 	const categoryIdFromLocalStorage = localStorage.getItem("currentCategory");
-	useEffect(() => {
-		if (categoryIdFromLocalStorage) {
-			setCategoryId(
-				parseInt(categoryIdFromLocalStorage),
-				setNumber(parseInt(IdFromLocalStorage))
-			);
-		}
-		fetchCount();
-	}, []);
 
 	// 	// function to handle changes in the category select element
 	function handleChangeCategory(e) {
@@ -161,7 +144,6 @@ function PhraseGet() {
 				setShowSelect(false);
 			} else {
 				// if there are no more numbers available, remove the previousid array from local storage and log a message
-				console.log("acabou");
 			}
 		} else {
 			setCategoryId(categoryId);
@@ -171,8 +153,8 @@ function PhraseGet() {
 	async function fetchOptions() {
 		// fetch data from api using fetch function
 		const response = await fetch(
-			`http://127.0.0.1:200/api/categories/all/`
-			// `https://motivational-api-2kzjz.ondigitalocean.app/api/categories/all/`
+			// `http://127.0.0.1:200/api/categories/all/`
+			`https://motivational-api-2kzjz.ondigitalocean.app/api/categories/all/`
 		);
 		// parse response to json
 		const json = await response.json();
@@ -181,9 +163,7 @@ function PhraseGet() {
 		// set options state
 		setOptions(arr);
 		// set loading state to false
-		// localStorage.setItem(`currentCategory`, UrlCategoryId);
 		localStorage.setItem(`currentCategory`, categoryId);
-
 		setLoading(false);
 		// call fetchData function
 		// if (!categoryIdFromLocalStorage) {
@@ -201,15 +181,11 @@ function PhraseGet() {
 	}, [categoryId, number]);
 
 	useEffect(() => {
-		console.log("haha", UrlPhraseId, UrlCategoryId);
-	}, [location]);
+		setCategoryId(UrlCategoryId);
+		setNumber(UrlPhraseId);
+	}, []);
 
 	async function fetchData() {
-		// if (!categoryIdFromLocalStorage) {
-		// 	setCategoryId(UrlCategoryId);
-		// 	setNumber(UrlPhraseId);
-		// }
-
 		setLoadingImg(true);
 
 		let retries = 0;
@@ -222,16 +198,11 @@ function PhraseGet() {
 		) {
 			// try to fetch data from api
 			try {
-				localStorage.setItem("currentID", number);
-				localStorage.setItem(`currentCategory`, categoryId);
 				response = await fetch(
-					`http://127.0.0.1:200/api/categories/${categoryId}/phrases/?filter_by_id=${number}`
-					// `	https://motivational-api-2kzjz.ondigitalocean.app/api/categories/${categoryId}/phrases/?filter_by_id=${number}`
+					// `http://127.0.0.1:200/api/categories/${categoryId}/phrases/?filter_by_id=${number}`
+					`	https://motivational-api-2kzjz.ondigitalocean.app/api/categories/${categoryId}/phrases/?filter_by_id=${number}`
 				);
-				// localStorage.setItem("currentID", UrlPhraseId);
-
 				localStorage.setItem("currentID", number);
-
 				console.log(`GET ${response.url} `);
 				// if response status is 404, increment retries
 				if (response.status === 404) {
@@ -259,13 +230,13 @@ function PhraseGet() {
 		if (previousIdList.length === idLists[categoryId].length) {
 			localStorage.removeItem(`previousid${categoryId}`);
 		}
-		window.history.pushState(
+		const URL = window.history.pushState(
 			{},
 			"",
-			`/categories/${categoryId}/phrases/?filter_by_id=${number}`
+			`/categories/${categoryId}/phrases/${number}`
 		);
-		console.log("123", categoryId, number);
 	}
+
 	return (
 		<section className={styles.mainContainer}>
 			{idLists.length <= 0 ? (
@@ -279,6 +250,7 @@ function PhraseGet() {
 						loading={loading}
 						handleClick={handleClick}
 						showSelect={showSelect}
+						handleSelectCategory={handleSelectCategory}
 					/>
 				</>
 			)}
